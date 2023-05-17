@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
-
 import { ReactRotationSlider } from 'react-rotation-slider';
 import 'react-rotation-slider/dist/index.css';
+import { BsFillArrowDownCircleFill } from 'react-icons/bs';
 
 import img1 from '../../assets/images/food1.png';
 import img2 from '../../assets/images/food2.png';
@@ -60,15 +60,31 @@ const Home = () => {
                         onClick={() => sliderHandler({ type: "prev" })}
                         className='cursor-pointer'
                     >
-                        Prev
+                        <BsFillArrowDownCircleFill className='text-4xl hover:translate-y-1 ease-in-out hover:scale-105' />
                     </p>
                     <p
                         onClick={() => sliderHandler({ type: "next" })}
                         className='cursor-pointer'
                     >
-                        Next
+                        <BsFillArrowDownCircleFill className='text-4xl hover:translate-y-1 ease-in-out hover:scale-105' />
                     </p>
                 </div>
+            </div>
+
+            {/* left side */}
+            <div className='flex flex-col pt-64 gap-5'>
+                <h1 className='text-5xl font-bold'>Delicious</h1>
+                <h2 className='text-4xl opacity-75'>Quench the Hunger</h2>
+                <h3 className='text-justify w-[30rem] text-xl opacity-70'>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Ipsa expedita, doloremque dolorum et quisquam aperiam
+                    similique assumenda numquam placeat ullam.
+                </h3>
+                <p className='mt-14 text-lg bg-slate-500 w-max px-7 py-4 rounded-[4rem] cursor-pointer text-white 
+                    ease-in-out duration-700 hover:rounded-sm shadow-2xl'
+                >
+                    Quench Now
+                </p>
             </div>
         </div>
     );
