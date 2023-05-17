@@ -11,16 +11,15 @@ import img4 from '../../assets/images/food4.png';
 const Home = () => {
     let images = [img1, img2, img3, img4, img1, img2, img3, img4, img1];
     const [imageIndex, setImageIndex] = useState(0);
-    const [themeColors, setThemeColors] = useState(
-        [
-            { light: '#c2ffa7', dark: '#509630' },
-            { light: '#ffbe96', dark: '#f99456' },
-            { light: '#ffeba3', dark: '#dab322' },
-            { light: '#959df4', dark: '#5d219e' },
-            { light: '#a2cef9', dark: '#1d1ac5' },
-            { light: '#f55d5d', dark: '#a80404' },
-        ]
-    );
+    const themeColors = [
+        { light: '#c2ffa7', dark: '#509630' },
+        { light: '#ffbe96', dark: '#f99456' },
+        { light: '#ffeba3', dark: '#dab322' },
+        { light: '#959df4', dark: '#5d219e' },
+        { light: '#a2cef9', dark: '#1d1ac5' },
+        { light: '#f55d5d', dark: '#a80404' },
+    ];
+
     const [themeIndex, setThemeIndex] = useState(0);
 
     const slider = useRef();
@@ -55,8 +54,8 @@ const Home = () => {
         <div className='container mx-auto relative'>
             {/* back slider */}
             <div
-                className='w-11/12 aspect-square rounded-full absolute -top-[900px] -right-[350px] 
-                    flex justify-center items-end overflow-hidden shadow-2xl'
+                className='w-11/12 aspect-square rounded-full absolute -top-[700px] 2xl:-top-[900px] -right-[250px] 
+                2xl:-right-[350px] flex justify-center items-end overflow-hidden shadow-2xl'
                 style={{ backgroundColor: themeColors[themeIndex].light }}
             >
                 <div className='absolute -bottom-[350px]'>
@@ -65,7 +64,7 @@ const Home = () => {
             </div>
 
             {/* front slider */}
-            <div className='absolute w-[20rem] right-[200px] top-[500px]'>
+            <div className='absolute w-[20rem] right-[180px] 2xl:right-[200px] top-[450px] 2xl:top-[500px]'>
                 <div className='flex justify-center items-center'>
                     {images?.map((image, i) => (
                         <img
@@ -98,7 +97,7 @@ const Home = () => {
             </div>
 
             {/* left side */}
-            <div className='flex flex-col pt-64 gap-5'>
+            <div className='flex flex-col pt-52 2xl:pt-64 gap-5'>
                 <h1
                     className='text-5xl font-bold ease-in-out duration-500'
                     style={{ color: themeColors[themeIndex].dark }}
