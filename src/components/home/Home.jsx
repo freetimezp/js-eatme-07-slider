@@ -11,10 +11,29 @@ import img4 from '../../assets/images/food4.png';
 const Home = () => {
     let images = [img1, img2, img3, img4, img1, img2, img3, img4, img1];
     const [imageIndex, setImageIndex] = useState(0);
+    const [themeColors, setThemeColors] = useState(
+        [
+            { light: '#c2ffa7', dark: '#509630' },
+            { light: '#ffbe96', dark: '#f99456' },
+            { light: '#ffeba3', dark: '#dab322' },
+            { light: '#959df4', dark: '#5d219e' },
+            { light: '#a2cef9', dark: '#1d1ac5' },
+            { light: '#f55d5d', dark: '#a80404' },
+        ]
+    );
+    const [themeIndex, setThemeIndex] = useState(0);
 
     const slider = useRef();
 
     const sliderHandler = ({ type }) => {
+        // theme change
+        if (themeIndex < themeColors.length - 1) {
+            setThemeIndex(themeIndex + 1);
+        } else {
+            setThemeIndex(0);
+        }
+
+        // slide
         if (type === "next") {
             slider.current.next();
             if (imageIndex > 0) {
@@ -35,8 +54,11 @@ const Home = () => {
     return (
         <div className='container mx-auto relative'>
             {/* back slider */}
-            <div className='w-11/12 aspect-square rounded-full absolute -top-[900px] -right-[350px] bg-slate-400
-                flex justify-center items-end overflow-hidden'>
+            <div
+                className='w-11/12 aspect-square rounded-full absolute -top-[900px] -right-[350px] 
+                    flex justify-center items-end overflow-hidden shadow-2xl'
+                style={{ backgroundColor: themeColors[themeIndex].light }}
+            >
                 <div className='absolute -bottom-[350px]'>
                     <ReactRotationSlider images={images} ref={slider} />
                 </div>
@@ -59,21 +81,30 @@ const Home = () => {
                     <p
                         onClick={() => sliderHandler({ type: "prev" })}
                         className='cursor-pointer'
+                        style={{ color: themeColors[themeIndex].dark }}
                     >
-                        <BsFillArrowDownCircleFill className='text-4xl hover:translate-y-1 ease-in-out hover:scale-105' />
+                        <BsFillArrowDownCircleFill
+                            className='text-4xl hover:translate-y-1 ease-in-out hover:scale-105 drop-shadow-sm' />
                     </p>
                     <p
                         onClick={() => sliderHandler({ type: "next" })}
                         className='cursor-pointer'
+                        style={{ color: themeColors[themeIndex].dark }}
                     >
-                        <BsFillArrowDownCircleFill className='text-4xl hover:translate-y-1 ease-in-out hover:scale-105' />
+                        <BsFillArrowDownCircleFill
+                            className='text-4xl hover:translate-y-1 ease-in-out hover:scale-105 drop-shadow-sm' />
                     </p>
                 </div>
             </div>
 
             {/* left side */}
             <div className='flex flex-col pt-64 gap-5'>
-                <h1 className='text-5xl font-bold'>Delicious</h1>
+                <h1
+                    className='text-5xl font-bold ease-in-out duration-500'
+                    style={{ color: themeColors[themeIndex].dark }}
+                >
+                    Delicious
+                </h1>
                 <h2 className='text-4xl opacity-75'>Quench the Hunger</h2>
                 <h3 className='text-justify w-[30rem] text-xl opacity-70'>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -82,6 +113,7 @@ const Home = () => {
                 </h3>
                 <p className='mt-14 text-lg bg-slate-500 w-max px-7 py-4 rounded-[4rem] cursor-pointer text-white 
                     ease-in-out duration-700 hover:rounded-sm shadow-2xl'
+                    style={{ backgroundColor: themeColors[themeIndex].dark }}
                 >
                     Quench Now
                 </p>
